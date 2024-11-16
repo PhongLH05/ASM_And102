@@ -32,4 +32,9 @@ public class SanPhamDAO {
 
         return lst;
     }
+
+    public boolean removeProduct(int id){
+        int row = database.delete("SANPHAM", "id=?", new String[]{String.valueOf(id)});
+        return row != -1;
+    }
 }
