@@ -1,75 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center|top"
-    android:padding="12dp"
+    app:cardCornerRadius="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Them san pham"
-        android:textAllCaps="true"
-        android:textSize="36dp"
-        android:textColor="#FF0000"
-        android:textStyle="bold"/>
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ten san pham:"
-        android:textStyle="bold"
-        android:textSize="18dp"/>
+        android:orientation="vertical"
+        android:background="#C3EB88"
+        android:padding="10dp"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Them san pham"
+            android:textAllCaps="true"
+            android:textSize="36dp"
+            android:textColor="#FF0000"
+            android:textStyle="bold"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Ten san pham"
-        android:background="@drawable/custom_edittext"
-        android:id="@+id/edtPrName"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ten san pham:"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
 
-    <TextView
-        android:layout_marginTop="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Gia ban:"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ten san pham"
+            android:background="@drawable/custom_edittext"
+            android:id="@+id/edtPrName"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Gia ban"
-        android:background="@drawable/custom_edittext"
-        android:id="@+id/PrPrice"/>
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gia ban:"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            />
 
-    <TextView
-        android:layout_marginTop="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="So luong:"
-        android:textStyle="bold"
-        android:textSize="18dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Gia ban"
+            android:background="@drawable/custom_edittext"
+            android:id="@+id/PrPrice"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="So luong:"
-        android:background="@drawable/custom_edittext"
-        android:id="@+id/PrQuantity"/>
-    
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Them"
-        android:textAllCaps="true"
-        android:background="@drawable/custom_button"
-        app:backgroundTint="@null"
-        android:layout_marginTop="12dp"
-        android:id="@+id/btnThem"/>
+        <TextView
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="So luong:"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="So luong:"
+            android:background="@drawable/custom_edittext"
+            android:id="@+id/PrQuantity"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Them"
+            android:textAllCaps="true"
+            android:background="@drawable/custom_button"
+            app:backgroundTint="@null"
+            android:layout_marginTop="12dp"
+            android:id="@+id/btnThem"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Huy"
+            android:textAllCaps="true"
+            android:background="@drawable/custom_button"
+            app:backgroundTint="@null"
+            android:layout_marginTop="12dp"
+            android:id="@+id/btnHuy"/>
 
 
-</LinearLayout>
+    </LinearLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>

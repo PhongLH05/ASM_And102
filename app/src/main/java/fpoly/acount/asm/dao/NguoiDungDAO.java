@@ -26,10 +26,21 @@ public class NguoiDungDAO {
         database = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("tendangnhap", username);
-        values.put("makhau", password);
+        values.put("matkhau", password);
         values.put("hoten", hoten);
 
         long check = database.insert("NGUOIDUNG", null, values);
         return check != -1;
+    }
+
+    public String forGotpassWord(String email){
+        database = dbHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT matkhau FROM NGUOIDUNG WHERE tendangnhap=?", new String[]{email});
+        if(cursor.getCount() > 0){
+            cursor.moveToFirst();
+            return cursor.getString(0);
+        }else {
+            return "";
+        }
     }
 }

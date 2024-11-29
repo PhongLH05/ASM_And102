@@ -1,7 +1,10 @@
 package fpoly.acount.asm;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowInsets;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -32,6 +35,20 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        View decoreView = getWindow().getDecorView();
+        decoreView.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
+            @NonNull
+            @Override
+            public WindowInsets onApplyWindowInsets(@NonNull View view, @NonNull WindowInsets windowInsets) {
+                int left = windowInsets.getSystemWindowInsetLeft();
+                int top = windowInsets.getSystemWindowInsetTop();
+                int bottom = windowInsets.getSystemWindowInsetBottom();
+                int right = windowInsets.getSystemWindowInsetRight();
+                view.setPadding(left, top, right, bottom);
+                return windowInsets.consumeSystemWindowInsets();
+            }
+        });
+
 
         drawerLayout = findViewById(R.id.drawerlayout);
         toolbar = findViewById(R.id.toolbar);
@@ -49,9 +66,13 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 if (item.getItemId() == R.id.mQLSP){
                     fragment = new ProductFragment();
-                }else if (item.getItemId() == R.id.mGioiThieu){
+                } else if (item.getItemId() == R.id.mGioiThieu){
                     fragment = new AboutFragment();
-                }else {
+                } else if (item.getItemId() == R.id.mThoat){
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+
+                }
+                else {
                     fragment = new ProductFragment();
                 }
 

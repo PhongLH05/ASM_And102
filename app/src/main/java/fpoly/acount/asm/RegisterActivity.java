@@ -29,11 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
 
 //        Toolbar myToolbar = findViewById(R.id.myToolbar);
 //        setSupportActionBar(myToolbar);
@@ -45,18 +41,22 @@ public class RegisterActivity extends AppCompatActivity {
         edtUser = findViewById(R.id.edtUser);
         edtPass = findViewById(R.id.edtPass);
         edtFullname = findViewById(R.id.edtFullname);
+        btnRegister = findViewById(R.id.btnRegister);
+        dao = new NguoiDungDAO(this);
 
-//        btnRegister.setOnClickListener(view -> {
-//            String user = edtUser.getText().toString();
-//            String pass = edtPass.getText().toString();
-//            String fullname = edtFullname.getText().toString();
-//
-//            boolean check = dao.register(user, pass, fullname);
-//            if (check){
-//                Toast.makeText(this, "Thanh cong", Toast.LENGTH_SHORT).show();
-//                finish();
-//            }
-//        });
+        btnRegister.setOnClickListener(view -> {
+            String user = edtUser.getText().toString();
+            String pass = edtPass.getText().toString();
+            String fullname = edtFullname.getText().toString();
+
+            boolean check = dao.register(user, pass, fullname);
+            if (check){
+                Toast.makeText(this, "Thanh cong", Toast.LENGTH_SHORT).show();
+                finish();
+            }else {
+                Toast.makeText(this, "that bai", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 

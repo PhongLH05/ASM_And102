@@ -1,5 +1,6 @@
 package fpoly.acount.asm.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -33,8 +34,36 @@ public class SanPhamDAO {
         return lst;
     }
 
-    public boolean removeProduct(int id){
-        int row = database.delete("SANPHAM", "id=?", new String[]{String.valueOf(id)});
-        return row != -1;
+    public boolean removeProduct(int masp){
+        database = dbHelper.getWritableDatabase();
+        int check = database.delete("SANPHAM", "masp=?", new String[]{String.valueOf(masp)});
+        return check > 0;
+    }
+
+    public boolean addProdduct(Product product){
+        database = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("masp", product.getMasp());
+        values.put("tensp", product.getTensp());
+        values.put("giaban", product.getGiaban());
+        values.put("soluong", product.getSoluong());
+
+        long check = database.insert("SANPHAM", null, values);
+
+        return check != -1;
+    }
+
+
+    public boolean editProduct(Product product){
+        database = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("tensp", product.getTensp());
+        values.put("giaban", product.getGiaban());
+        values.put("soluong", product.getSoluong());
+
+        int check = database.update("SANPHAM", values, "masp = ?", new String[]{String.valueOf(product.getMasp())});
+
+        return check >= 0;
     }
 }
