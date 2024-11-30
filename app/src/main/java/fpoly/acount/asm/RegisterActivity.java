@@ -2,6 +2,8 @@ package fpoly.acount.asm;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowInsets;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -30,13 +32,27 @@ public class RegisterActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
 
+        View decoreView = getWindow().getDecorView();
+        decoreView.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
+            @NonNull
+            @Override
+            public WindowInsets onApplyWindowInsets(@NonNull View view, @NonNull WindowInsets windowInsets) {
+                int left = windowInsets.getSystemWindowInsetLeft();
+                int top = windowInsets.getSystemWindowInsetTop();
+                int bottom = windowInsets.getSystemWindowInsetBottom();
+                int right = windowInsets.getSystemWindowInsetRight();
+                view.setPadding(left, top, right, bottom);
+                return windowInsets.consumeSystemWindowInsets();
+            }
+        });
 
-//        Toolbar myToolbar = findViewById(R.id.myToolbar);
-//        setSupportActionBar(myToolbar);
-//
-//
-//        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.baseline_arrow_back);
+
+        Toolbar myToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Register");
+
+
 
         edtUser = findViewById(R.id.edtUser);
         edtPass = findViewById(R.id.edtPass);
@@ -62,8 +78,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new AboutFragment();
                 } else if (item.getItemId() == R.id.mThoat){
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
-
+                    finish();
                 }
                 else {
                     fragment = new ProductFragment();
